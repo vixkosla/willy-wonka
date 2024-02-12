@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "@parcel/config-default": "^2.11.0",
+    "gsap": "^3.12.5",
+    "three": "^0.161.0"
+  },
+  "name": "willy-wonka",
+  "version": "1.0.0",
+  "main": "./src/main.js",
+  "staticFiles": {
+    "staticOutPath": "./assets/models",
+    "staticPath": "./assets/models"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1",
+    "parcel-plugin-static-files-copy": "^2.6.0"
+  },
+  "scripts": {
+    "start": "npx parcel index.html --open",
+    "build": "npx parcel build index.html",
+    "predeploy": "rm -rf dist && npx parcel build src/index.html --no-source-maps --public-url ./",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "npx gh-pages -d dist"
+  },
+  "author": "",
+  "source": "index.html",
+  "license": "ISC",
+  "description": ""
+}
