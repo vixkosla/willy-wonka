@@ -138,7 +138,7 @@ class App {
             // const model = fbx
             // const newCube = fbxLoader.parse(new TextEncoder().encode(fbx), );
 
-            console.log(fbx)
+            // console.log(fbx)
 
             // scene.add(fbx)
 
