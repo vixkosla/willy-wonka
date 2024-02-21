@@ -6,7 +6,7 @@
   },
   "name": "willy-wonka",
   "version": "1.0.0",
-  "main": "./src/main.js",
+  "main": "index.html",
   "staticFiles": {
     "staticOutPath": "./assets/models",
     "staticPath": "./assets/models"
