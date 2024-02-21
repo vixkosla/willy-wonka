@@ -35,7 +35,8 @@ class App {
         scene.fog = new THREE.Fog(0xa0a0a0, 10, 50);
 
         renderer.shadowMap.enabled = true;
-        renderer.shadowMap.autoUpdate = true;
+        // renderer.shadowMap.autoUpdate = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
         document.body.appendChild(renderer.domElement);
 
@@ -58,9 +59,9 @@ class App {
         // dirLight.shadow.camera.far = 40;
         scene.add(dirLight)
 
-        const hemiLight = new THREE.HemisphereLight(0xffffff, 0x8d8d8d, 3);
+        const hemiLight = new THREE.HemisphereLight(0xffffff, 0x8d8d8d, 1.5);
         hemiLight.position.set(0, 20, 0);
-        // scene.add(hemiLight);
+        scene.add(hemiLight);
 
 
 
@@ -126,14 +127,14 @@ class App {
         diffuseMap.wrapS = THREE.RepeatWrapping;
         console.log(diffuseMap)
 
-        let url2 = new URL('../assets/models/Korobka_10k_poly/casket_v06.fbx', import.meta.url)
-        url2 = "" + url2
+        // let url2 = new URL('../assets/models/Korobka_10k_poly/casket_v06.fbx', import.meta.url)
+        // url2 = "" + url2
 
         const tMaterial = new THREE.MeshLambertMaterial({
             color: '#B4523C',
         });
 
-        fbxLoader.load(url2, function (fbx) {
+        // fbxLoader.load(url2, function (fbx) {
             // const model = fbx
             // const newCube = fbxLoader.parse(new TextEncoder().encode(fbx), );
 
@@ -141,29 +142,29 @@ class App {
 
             // scene.add(fbx)
 
-            fbx.scale.set(0.001, 0.001, 0.001)
+            // fbx.scale.set(0.001, 0.001, 0.001)
 
-            const box = new THREE.Box3();
+            // const box = new THREE.Box3();
             // box.copy(fbx.geometry.boundingBox).applyMatrix4(fbx.matrixWorld);
             // const box = new THREE.BoxHelper(fbx, 0x000000);
             // scene.add(box);
 
-            fbx.traverse(child => {
-                if (child instanceof THREE.Mesh && child.name == "korobka") {
-                    console.log(child)
+            // fbx.traverse(child => {
+        //         if (child instanceof THREE.Mesh && child.name == "korobka") {
+        //             console.log(child)
 
-                    // tMaterial.map = diffuseMap
+        //             // tMaterial.map = diffuseMap
 
-                    child.material[2] = tMaterial
+        //             child.material[2] = tMaterial
 
-                }
-            })
-        }, undefined, (xhr) => {
-            const loadedVal = `loaded: ${Math.floor(100.0 * xhr.loaded / xhr.total)}%`;
-            console.log(loadedVal);
-            console.log('error')
-            // document.querySelector('.loader').innerHTML = loadedVal;
-        })
+        //         }
+        //     })
+        // }, undefined, (xhr) => {
+        //     const loadedVal = `loaded: ${Math.floor(100.0 * xhr.loaded / xhr.total)}%`;
+        //     console.log(loadedVal);
+        //     console.log('error')
+        //     // document.querySelector('.loader').innerHTML = loadedVal;
+        // })
 
         controls = new OrbitControls(camera, renderer.domElement);
         controls.update();
